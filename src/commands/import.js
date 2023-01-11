@@ -22,7 +22,7 @@ module.exports = {
       let proxy = argv.proxy && JSON.parse(argv.proxy)
       let content;
       if(config.file.indexOf('http') !== 0){
-        content = require(path.resolve(cwd, config.file))
+        content = fs.readFileSync(path.resolve(cwd, config.file), 'utf-8')
       }else{
         content = await axios(config.file)
         content = content.data;
